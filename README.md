@@ -2,6 +2,10 @@
 ⚠️ [2] Thư mục gốc của ultralytics: `\Attention\ultralytics`  
 ⚠️ [3] Thư mục chứa các file cấu hình: `\Attention\ultralytics\ultralytics`  
 
+⚠️ Chạy `pip install --upgrade pip` tại `\attention`  
+⚠️ Chạy `pip install -r requirements.txt` tại `\attention`  
+⚠️ Chạy `pip install -e .` tại `\attention\ultralytics`  
+
 ### 1. Module Attention:
 - Đường dẫn: `ultralytics/ultralytics/nn/modules/attention.py`
 
