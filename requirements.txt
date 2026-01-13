@@ -1,0 +1,29 @@
+# Core
+numpy>=1.23
+opencv-python
+pillow
+pyyaml
+tqdm
+requests
+scipy
+matplotlib
+
+# Deep Learning
+torch>=2.0
+torchvision>=0.15
+torchaudio
+
+# Ultralytics dependencies
+ultralytics
+thop
+psutil
+
+# Attention / utils
+einops
+timm
+
+# Export / deploy (tùy chọn nhưng YOLO hay tự cài)
+onnx>=1.12,<2.0
+onnxruntime
+onnxslim
+openvino
