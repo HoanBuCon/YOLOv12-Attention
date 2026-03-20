@@ -3,3 +3,17 @@
 __pycache__/
 vat_lieu/
 build/
+
+# Local training datasets
+data/dataset/train/
+data/dataset/valid/
+data/dataset/test/
+data/dataset/**/*.jpg
+data/dataset/**/*.jpeg
+data/dataset/**/*.png
+data/dataset/**/*.bmp
+data/dataset/**/*.webp
+data/dataset/**/*.txt
+
+yolo11n.pt
+runs/

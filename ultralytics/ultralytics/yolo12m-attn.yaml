@@ -20,33 +20,34 @@ backbone:
   - [-1, 1, Conv, [64, 3, 2]] # 0 -P1/2
   - [-1, 1, Conv, [128, 3, 2]] # 1 -P2/4
   - [-1, 2, C3k2, [256, False, 0.25]] # 2
-  - [-1, 1, CBAM, [256]] # 3 Attention học texture & biên (Giấy, Vải, Nhựa) | ADDED
-  - [-1, 1, Conv, [256, 3, 2]] # 4 -P3/8
-  - [-1, 2, C3k2, [512, False, 0.25]] # 5
-  - [-1, 1, CBAM, [512]] # 6 Attention học phản xạ, kim loại, thủy tinh | ADDED
-  - [-1, 1, Conv, [512, 3, 2]] # 7 -P4/16
-  - [-1, 4, A2C2f, [512, True, 4]] # 8
+  - [-1, 1, Conv, [256, 3, 2]] # 3 -P3/8
+  - [-1, 2, C3k2, [512, False, 0.25]] # 4
+  - [-1, 1, CBAM, [512]] # 5 CBAM sâu cho texture/phản xạ vật liệu
+  - [-1, 1, Conv, [512, 3, 2]] # 6 -P4/16
+  - [-1, 4, A2C2f, [512, True, 4]] # 7
+  - [-1, 1, CBAM, [512]] # 8 CBAM sau khối hội tụ đặc trưng sâu
   - [-1, 1, Conv, [1024, 3, 2]] # 9 -P5/32
   - [-1, 4, A2C2f, [1024, True, 1]] # 10
 
 # YOLO12n head
 head:
   - [-1, 1, nn.Upsample, [None, 2, "nearest"]] #11
-  - [[-1, 8], 1, Concat, [1]] # 12 cat backbone P4 | Chỉnh lại con mèo <(")
+  - [[-1, 8], 1, Concat, [1]] # 12 cat backbone P4
   - [-1, 2, A2C2f, [512, False, -1]] # 13
+  - [-1, 1, SimAM, []] # 14 SimAM sau fusion P4
 
-  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] #14 
-  - [[-1, 6], 1, Concat, [1]] # 15 cat backbone P3 | Chỉnh lại con mèo <(")
-  - [-1, 2, A2C2f, [256, False, -1]] # 16
-  - [-1, 1, SimAM, []] # 17 refine vật liệu nhỏ, texture | ADDED
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] #15
+  - [[-1, 5], 1, Concat, [1]] # 16 cat backbone P3
+  - [-1, 2, A2C2f, [256, False, -1]] # 17
+  - [-1, 1, SimAM, []] # 18 refine vật liệu nhỏ/biên mảnh
 
-  - [-1, 1, Conv, [256, 3, 2]] # 18
-  - [[-1, 13], 1, Concat, [1]] # 19 cat head P4
-  - [-1, 2, A2C2f, [512, False, -1]] # 20
-  - [-1, 1, SimAM, []] # 21 refine phản xạ, cạnh | ADDED
+  - [-1, 1, Conv, [256, 3, 2]] # 19
+  - [[-1, 14], 1, Concat, [1]] # 20 cat head P4
+  - [-1, 2, A2C2f, [512, False, -1]] # 21
+  - [-1, 1, SimAM, []] # 22 refine phản xạ/đường viền
 
-  - [-1, 1, Conv, [512, 3, 2]] # 22
-  - [[-1, 10], 1, Concat, [1]] # 23 cat head P5 | Chỉnh lại con mèo <(")
-  - [-1, 2, C3k2, [1024, True]] # 24 (P5/32-large)
+  - [-1, 1, Conv, [512, 3, 2]] # 23
+  - [[-1, 10], 1, Concat, [1]] # 24 cat head P5
+  - [-1, 2, C3k2, [1024, True]] # 25 (P5/32-large)
 
-  - [[17, 21, 24], 1, Detect, [nc]] # 25 Detect(P3, P4, P5)
+  - [[18, 22, 25], 1, Detect, [nc]] # 26 Detect(P3, P4, P5)

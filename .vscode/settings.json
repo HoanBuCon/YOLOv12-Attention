@@ -1,0 +1,14 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/vat_lieu/Scripts/python.exe",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}",
+    "${workspaceFolder}/ultralytics"
+  ],
+  "python.analysis.stubPath": "${workspaceFolder}/ultralytics",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true
+  },
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true
+}

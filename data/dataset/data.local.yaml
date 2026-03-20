@@ -1,0 +1,17 @@
+path: D:/Hoc_Tap/Code/Du_An_Ca_Nhan/Computer_Vision/phan_loai_vat_lieu_tai_che/Attention/data/dataset
+train: train/images
+val: valid/images
+test: test/images
+nc: 5
+names:
+- Giay
+- KimLoai
+- Nhua
+- ThuyTinh
+- Vai
+roboflow:
+  workspace: datn-ez5bp
+  project: do_an_tn-blnp9
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/datn-ez5bp/do_an_tn-blnp9/dataset/3

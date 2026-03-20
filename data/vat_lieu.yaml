@@ -1,0 +1,34 @@
+# YOLO Dataset configuration for recycled materials classification
+# 5 classes: Giấy (Paper), Vải (Fabric), Nhựa (Plastic), Kim loại (Metal), Thủy tinh (Glass)
+
+path: /path/to/data  # Dataset root directory
+train: images/train   # Training images folder (relative to path)
+val: images/val       # Validation images folder (relative to path)
+test: images/test     # Test images folder (optional, relative to path)
+
+# Class mapping
+nc: 5  # Number of classes
+names: ['Giấy', 'Vải', 'Nhựa', 'Kim loại', 'Thủy tinh']  # Class names
+
+# Dataset structure example:
+# data/
+# ├── images/
+# │   ├── train/
+# │   │   ├── img001.jpg
+# │   │   ├── img002.jpg
+# │   │   └── ...
+# │   └── val/
+# │       ├── img100.jpg
+# │       └── ...
+# └── labels/
+#     ├── train/
+#     │   ├── img001.txt
+#     │   ├── img002.txt
+#     │   └── ...
+#     └── val/
+#         ├── img100.txt
+#         └── ...
+#
+# YOLO format: <class_id> <x_center> <y_center> <width> <height>
+# Example labels/train/img001.txt:
+# 0 0.5 0.5 0.3 0.4    (1 object of class 0 centered at image center)
