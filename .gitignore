@@ -16,4 +16,5 @@ data/dataset/**/*.webp
 data/dataset/**/*.txt
 
 yolo11n.pt
+best.pt
 runs/
